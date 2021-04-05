@@ -25,7 +25,7 @@ pipeline {
         stage('Unit Test') {
             agent {
                 docker {
-                    image 'mavem:3-alpine'
+                    image 'maven:3-alpine'
                     args '-v $HOME/.m2:/root/.m2 --entrypoint='
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
         stage('Dependency Vulnerability Analysis') {
             agent {
                 docker {
-                    image 'mavem:3-alpine'
+                    image 'maven:3-alpine'
                     args '-v $HOME/.m2:/root/.m2 --entrypoint='
                 }
             }
@@ -56,11 +56,11 @@ pipeline {
         }
         stage('Code Compile') {
             when {
-                expression { env.TAG_NAME ==~ /(rc.*)|(v.*)/ || env.BRANCH_NAME == "develop" }
+                expression { env.TAG_NAME ==~ /(rc.*)|(v.*)/ || env.BRANCH_NAME == "master" }
             }
             agent {
                 docker {
-                   image 'mavem:3-alpine'
+                   image 'maven:3-alpine'
                     args '-v $HOME/.m2:/root/.m2 --entrypoint='
                 }
             }
