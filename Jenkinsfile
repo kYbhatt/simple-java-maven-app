@@ -33,7 +33,7 @@ pipeline {
                 script {
                     FAILED_STAGE=env.STAGE_NAME
                     echo "Unit Test "
-                    sh "mvn test -Dmaven.test.skip=true"
+                    sh "mvn dependency-check:check -Dmaven.test.skip=true"
                 }
             }
         }
