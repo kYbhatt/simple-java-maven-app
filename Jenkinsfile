@@ -22,5 +22,20 @@ pipeline {
                 }
             }
         }
+        stage('Unit Test') {
+            agent {
+                docker {
+                    image 'maven:3.6.3'
+                    args '-v $HOME/.m2:/root/.m2 --entrypoint='
+                }
+            }
+            steps {
+                script {
+                    FAILED_STAGE=env.STAGE_NAME
+                    echo "Unit Test "
+                    sh "mvn test -Dmaven.test.skip=true"
+                }
+            }
+        }
     }
 }
