@@ -33,7 +33,7 @@ pipeline {
                 script {
                     FAILED_STAGE=env.STAGE_NAME
                     echo "Unit Test "
-                    sh 'mvn -B -DskipTests clean package'
+                    sh 'mvn -B -e -DskipTests clean package'
                 }
             }
         }
