@@ -33,8 +33,7 @@ pipeline {
                 script {
                     FAILED_STAGE=env.STAGE_NAME
                     echo "Unit Test "
-                    sh "mvn clean package -Dmaven.test.skip=true"
-                    stash name: "service-jar", includes: "target/*.jar"
+                    sh 'mvn -B -DskipTests clean package'
                 }
             }
         }
