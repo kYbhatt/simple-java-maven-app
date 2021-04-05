@@ -25,7 +25,7 @@ pipeline {
         stage('Unit Test') {
             agent {
                 docker {
-                    image 'maven:3_alpine'
+                    image 'mavem:3-alpine'
                     args '-v $HOME/.m2:/root/.m2 --entrypoint='
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
         stage('Dependency Vulnerability Analysis') {
             agent {
                 docker {
-                    image 'maven:3_alpine'
+                    image 'mavem:3-alpine'
                     args '-v $HOME/.m2:/root/.m2 --entrypoint='
                 }
             }
@@ -60,7 +60,7 @@ pipeline {
             }
             agent {
                 docker {
-                    image 'maven:3_alpine'
+                   image 'mavem:3-alpine'
                     args '-v $HOME/.m2:/root/.m2 --entrypoint='
                 }
             }
