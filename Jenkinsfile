@@ -52,9 +52,6 @@ pipeline {
             }
         }
         stage('Code Compile') {
-            when {
-                expression { env.TAG_NAME ==~ /(rc.*)|(v.*)/ || env.BRANCH_NAME == "master" }
-            }
             agent {
                 docker {
                    image 'maven:3-alpine'
