@@ -48,9 +48,6 @@ pipeline {
                 script {
                     FAILED_STAGE=env.STAGE_NAME
                     echo "Application Dependency Vulnerability Analysis"
-                    sh "mvn dependency-check:check -Dmaven.test.skip=true"
-                    stash name: "dependency-reports", includes: "target/dependency-check-report.*"
-                    archiveArtifacts artifacts: 'target/dependency-check-report.*', fingerprint: true
                 }
             }
         }
