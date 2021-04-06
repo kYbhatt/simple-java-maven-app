@@ -64,6 +64,7 @@ pipeline {
                 	echo "Code Compile stage"
                 	sh "mvn clean package -Dmaven.test.skip=true"
                 	stash name: "service-jar", includes: "target/*.jar"
+			archiveArtifacts 'target/*.jar'
                 }
             }
         }
