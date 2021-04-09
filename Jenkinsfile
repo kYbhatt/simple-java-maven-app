@@ -72,7 +72,7 @@ pipeline {
             agent {
                 docker {
                 image 'docker:19.03.6'
-   	 	arg -v '/var/run/docker.sock:/var/run/docker.sock'
+   	 	args '-v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
             steps {
