@@ -68,5 +68,22 @@ pipeline {
                 }
             }
         }
+        stage('Docker Build') {
+            agent {
+                docker {
+                image 'docker:19.03.6'
+                }
+            }
+            steps {
+                script {
+                    FAILED_STAGE=env.STAGE_NAME
+                	echo "Docker image build"
+                    unstash "service-jar"
+                    sh'''
+                    	docker build -t $SERVICE_NAME:latest .
+                    '''
+                }
+            }
+        }
     }
 }
