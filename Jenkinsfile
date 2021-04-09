@@ -72,7 +72,7 @@ pipeline {
             agent {
                 docker {
                 image 'docker:20.10.5'
-         	args '--privilaged -v /var/run/docker.sock:/var/run/docker.sock'
+         	args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
             steps {
