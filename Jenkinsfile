@@ -69,7 +69,6 @@ pipeline {
             }
         }
         stage('Docker Build') {
-            }
             steps {
                 script {
                     FAILED_STAGE=env.STAGE_NAME
