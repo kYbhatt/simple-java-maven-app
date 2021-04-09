@@ -77,11 +77,9 @@ pipeline {
             steps {
                 script {
                     FAILED_STAGE=env.STAGE_NAME
-                	echo "Docker image build"
+                    echo "Docker image build"
                     unstash "service-jar"
-                    sh'''
-                    	docker build -t $SERVICE_NAME:latest .
-                    '''
+		    def DockerImage = docker.build("$SERVICE_NAME:latest")	
                 }
             }
         }
