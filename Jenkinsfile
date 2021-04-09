@@ -71,8 +71,7 @@ pipeline {
         stage('Docker Build') {
             agent {
                 docker {
-                image 'docker:19.03.6'
-   	 	args '-v /var/run/docker.sock:/var/run/docker.sock'
+                image 'docker:latest'
                 }
             }
             steps {
@@ -80,7 +79,7 @@ pipeline {
                     FAILED_STAGE=env.STAGE_NAME
                     echo "Docker image building"
                     unstash "service-jar"
-		    def DockerImage = docker.build("$SERVICE_NAME:latest")	
+		   sh 'docker build -t $SERVICE_NAME:latest .'
                 }
             }
         }
