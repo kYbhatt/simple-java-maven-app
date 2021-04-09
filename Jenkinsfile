@@ -69,11 +69,6 @@ pipeline {
             }
         }
         stage('Docker Build') {
-            agent {
-                docker {
-                image 'docker:20.10.5'
-                }
-            }
             steps {
                 script {
                     FAILED_STAGE=env.STAGE_NAME
