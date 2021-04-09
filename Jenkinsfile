@@ -69,6 +69,12 @@ pipeline {
             }
         }
         stage('Docker Build') {
+            agent {
+                docker {
+                image 'docker:20.10.5'
+         	args '--privilaged -v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
             steps {
                 script {
                     FAILED_STAGE=env.STAGE_NAME
